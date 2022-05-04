@@ -21,6 +21,7 @@ class CreateRegistersTable extends Migration
             $table->integer('mobile');
             $table->string('about_me',500)->nullable();
             $table->string('password');
+            $table->integer('ratings')->default(1);
             $table->timestamps();
         });
     }
