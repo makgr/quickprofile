@@ -178,7 +178,7 @@ margin: 0 auto;
      
   }
   else {
-     $('.full-name-msg').empty();
+     $('.about-me-msg').empty();
      $(this).addClass('valid-input').removeClass('invalid-input');
   }
  });
