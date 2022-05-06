@@ -51,8 +51,21 @@ margin: 0 auto;
 <body>
 
 <div class = "validation-form">
-
-<form method = "post" action="" id="myForm">
+   @if ($errors->any())
+   <div class="invalid-msg">
+       <ul>
+           @foreach ($errors->all() as $error)
+               <li>{{ $error }}</li>
+           @endforeach
+       </ul>
+   </div>
+@endif
+@if (session('message'))
+      <div class="valid-input">
+         {{ session('message') }}
+      </div>
+@endif
+<form method = "post" action="{{route('createProfile')}}" id="myForm">
  @csrf
    <h3>Registration Form</h3>
 
@@ -67,7 +80,7 @@ margin: 0 auto;
   </div>
 
   <div class="form-group">
-    <input type="text" placeholder="Username" id="user_name">
+    <input type="text" placeholder="Username" name="user_name" id="user_name">
     <div class="user-name-msg"></div>
     <div id="uname_response"></div>
  </div>

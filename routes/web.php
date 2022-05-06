@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UsernameController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,4 @@ Route::get('/registration', function () {
 })->name('registration');
 
 Route::post('/usernameAvailableCheck/checkUsername', [UsernameController::class, 'checkUsername'])->name('usernameAvailableCheck');
+Route::post('/registration', [RegisterController::class, 'registration'])->name('createProfile');
