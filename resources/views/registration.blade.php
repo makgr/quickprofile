@@ -46,13 +46,22 @@ margin: 0 auto;
   font-size:20px;
   color:white;
 }
+
+.success{
+   background-color: #148514;
+   color: #eae9e9;
+}
+.failed{
+   background-color: #b51826;
+   color: #eae9e9;
+}
   </style>
 </head>
 <body>
 
 <div class = "validation-form">
    @if ($errors->any())
-   <div class="invalid-msg">
+   <div class="failed">
        <ul>
            @foreach ($errors->all() as $error)
                <li>{{ $error }}</li>
@@ -61,7 +70,7 @@ margin: 0 auto;
    </div>
 @endif
 @if (session('message'))
-      <div class="valid-input">
+      <div class="success">
          {{ session('message') }}
       </div>
 @endif

@@ -25,3 +25,4 @@ Route::get('/registration', function () {
 
 Route::post('/usernameAvailableCheck/checkUsername', [UsernameController::class, 'checkUsername'])->name('usernameAvailableCheck');
 Route::post('/registration', [RegisterController::class, 'registration'])->name('createProfile');
+Route::get('{username}', [RegisterController::class, 'showProfileData'])->name('profile');

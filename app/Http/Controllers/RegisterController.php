@@ -28,4 +28,13 @@ class RegisterController extends Controller
 
         return redirect()->route('registration')->with('message','Registration Successful!');
     }
+
+    public function showProfileData($username)
+    {
+        $profileData = Register::select("*")
+                        ->where("user_name", "=", $username)
+                        ->first();
+        return view('profile', compact('profileData'));
+    }
+
 }
