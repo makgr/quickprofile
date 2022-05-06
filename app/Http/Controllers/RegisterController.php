@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Register;
+use App\Rules\isValidPassword;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -15,6 +16,9 @@ class RegisterController extends Controller
             'user_name' => 'unique:registers',
             'mobile' => 'required',
             'about_me' => 'max:500',
+            'password' => [
+                new isValidPassword(),
+            ],
         ]);
 
         $register = Register::create([
