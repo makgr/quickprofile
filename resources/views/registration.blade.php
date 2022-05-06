@@ -53,7 +53,7 @@ margin: 0 auto;
 <div class = "validation-form">
 
 <form method = "post" action="" id="myForm">
- 
+ @csrf
    <h3>Registration Form</h3>
 
   <div class="form-group">
@@ -69,6 +69,7 @@ margin: 0 auto;
   <div class="form-group">
     <input type="text" placeholder="Username" id="user_name">
     <div class="user-name-msg"></div>
+    <div id="uname_response"></div>
  </div>
 
  <div class="form-group">
@@ -240,6 +241,34 @@ margin: 0 auto;
   });
   
   });
+</script>
+
+<script>
+   $(document).ready(function(){
+
+       $("#user_name").keyup(function(){
+
+           var username = $(this).val().trim();
+           var _token = $('input[name="_token"]').val();
+   
+           if(username != ''){
+   
+               $.ajax({
+                   url: '{{ route('usernameAvailableCheck') }}',
+                   type: 'post',
+                   data: {username: username, _token: _token},
+                   success: function(response){
+                       $('#uname_response').html(response);
+                     //   console.log(response);
+                    }
+               });
+           }else{
+               $("#uname_response").html("");
+           }
+   
+       });
+
+   });
 </script>
 
 </body>

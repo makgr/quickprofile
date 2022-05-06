@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsernameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::get('/', function () {
 Route::get('/registration', function () {
     return view('registration');
 })->name('registration');
+
+Route::post('/usernameAvailableCheck/checkUsername', [UsernameController::class, 'checkUsername'])->name('usernameAvailableCheck');
