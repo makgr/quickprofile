@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\RatingsCron::class
     ];
 
     /**
@@ -24,7 +24,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('log:cron')
+                  ->timezone('Asia/Dhaka')
+                  ->withoutOverlapping()
+                  ->daily();
     }
 
     /**

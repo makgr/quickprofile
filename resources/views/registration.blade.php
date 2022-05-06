@@ -261,12 +261,7 @@ margin: 0 auto;
          
         }
   });
-  
-//create username from full name
-     $("#full_name").keyup(function() {
-        var name = $("#full_name").val();
-        $("#user_name").val( name.toLowerCase().replace( /\s+/g, "-" ) );
-     });
+
 
 
   });
@@ -275,13 +270,11 @@ margin: 0 auto;
 <script>
    $(document).ready(function(){
 
-      //  $("#user_name").keyup(function(){
        $("#full_name").keyup(function(){
          
          var fname = $("#full_name").val();
         $("#user_name").val( fname.toLowerCase().replace( /\s+/g, "-" ) );
 
-         //   var username = $(this).val().trim();
            var username = $("#user_name").val().trim();
            var _token = $('input[name="_token"]').val();
    
